@@ -27,7 +27,7 @@ b = 5;
 // When should const be used?
 // When declaring a variable that you feel does not need to change in the program, now or in the future,
 // or when the variable represents a specific value to make the code more readable instead of writing the 
-// literal value directly (for example: MENTEN_DELAY_500, …
+// literal value directly (for example: MENTEN_DELAY_500,...)
 
 // const  = 10;
 // x = 20; 

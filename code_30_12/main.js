@@ -53,7 +53,7 @@ console.log("Hello" - y);// Result 4
 // Declare 3 variables: age, mathScore, isVIP.
 let age, mathScore, isVIP;
 // Create a variable canEnter that uses logic operators(&&, ||) to calculate the result.Log the value to terminal screen
-const canEnter = () => Boolean(isVIP || (age >= 10 && mathScore > 7));
+const canEnter = () => isVIP || (age >= 10 && mathScore > 7);
 // Test your code with these cases:
 // age = 9, mathScore = 10, isVIP = false -> (Result must be false)
 age = 9;

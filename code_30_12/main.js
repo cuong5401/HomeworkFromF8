@@ -59,14 +59,14 @@ const canEnter = () => Boolean(isVIP || (age >= 10 && mathScore > 7));
 age = 9;
 mathScore = 10;
 isVIP = false;
-//Result
+//Result: false
 console.log(canEnter());
 
 // age = 9, mathScore = 10, isVIP = true -> (Result must be true)
 age = 9;
 mathScore = 10;
 isVIP = true;
-//Result
+//Result: true
 console.log(canEnter());
 
 // Logic Question: Is!(age < 10) mathematically the same as age >= 10 ?

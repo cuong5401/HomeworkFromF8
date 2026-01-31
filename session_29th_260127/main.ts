@@ -75,14 +75,14 @@ class Developer extends Employee {
     }
 }
 
-const dev = new Developer(1, "Alice", 2000000, 10);
+const dev: Employee = new Developer(1, "Alice", 2000000, 10);
 console.log(dev);
 console.log("dev id: ", dev.getId());
 console.log("dev name: ", dev.getName());
 dev.setName("Bob");
 console.log("dev new name: ", dev.getName());
 console.log("dev salary: ", dev.getSalary());
-dev.setSalary();
+dev.setSalary(1200000);
 console.log("dev new salary: ", dev.getSalary());
 
 // Manager
@@ -105,10 +105,10 @@ class Manager extends Employee {
         return this.salary;
     }
 }
-const manager = new Manager(1, "Alice", 2000000, 10);
+const manager: Employee = new Manager(1, "Alice", 2000000, 10);
 console.log(manager);
 console.log("manager id: ", manager.getId());
 console.log("manager name: ", manager.getName());
 console.log("manager salary: ", manager.getSalary());
-manager.setSalary();
+manager.setSalary(2500000);
 console.log("manager new salary: ", manager.getSalary());

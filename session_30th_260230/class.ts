@@ -15,7 +15,7 @@ export class ClassRoom implements ClassRoomI {
 
     constructor(name: string) {
         this.name = name;
-        console.log(`Đã tạo thành công lơp ${this.name}`);
+        console.log(`Đã tạo thành công lớp ${this.name}`);
     }
 
     addStudent(studentName: string): void {
@@ -24,12 +24,12 @@ export class ClassRoom implements ClassRoomI {
     }
 
     removeStudent(studentName: string): void {
-        const indexStuden = this.students.findIndex((student) => student.name === studentName);
-        if (indexStuden === -1) {
+        const indexStudent = this.students.findIndex((student) => student.name === studentName);
+        if (indexStudent === -1) {
             console.error(`Học sinh ${studentName} chưa được thêm vào lớp ${this.name}`);
             return;
         }
-        this.students.splice(indexStuden, 1);
+        this.students.splice(indexStudent, 1);
         console.log(`Đã xóa học sinh ${studentName} thành công khỏi lớp ${this.name}`);
     }
 

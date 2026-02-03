@@ -34,9 +34,19 @@ export class ClassRoom implements ClassRoomI {
     }
 
     notify(message: string): void {
+        if (this.students.length === 0) {
+            console.warn(`Lớp ${this.name} chưa có học sinh nào để thông báo`);
+            return;
+        }
         this.students.forEach((student) => student.update(message));
     }
-    postAnnouncement(message: string) {
+
+    postAnnouncement(message: string): void {
+        if (!message || message.trim() === "") {
+            console.error("Nội dung thông báo không được để trống");
+            return;
+        }
+        console.log(`[Lớp ${this.name}] Đang gửi thông báo: "${message}"`);
         this.notify(message);
     }
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="input-text" type="text">
+    <button id="add-item">Add</button>
+    <main id="main"></main>
+    <script>
+        let i = 0;
+        document.querySelector('#add-item').addEventListener("click", () => {
+            const input = document.querySelector('#input-text');
+            if (input.value.trim() === '') {
+                input.value = '';
+                return;
+            }
+            const li = document.createElement('li');
+            li.textContent = input.value.trim();
+            document.querySelector('#main').appendChild(li);
+            input.value = '';
+        }
+        )
+    </script>
+</body>
+
+</html>

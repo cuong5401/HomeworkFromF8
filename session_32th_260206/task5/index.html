@@ -5,12 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        li {
+            user-select: none;
+            cursor: pointer;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
     <input id="input-text" type="text" autocomplete="off">
     <button id="add-item">Add</button>
-    <main id="main"></main>
+    <li id="main"></li>
     <script>
         let i = 0;
         document.querySelector('#add-item').addEventListener("click", () => {
@@ -19,10 +29,16 @@
                 input.value = '';
                 return;
             }
-            const para = document.createElement('p');
-            para.textContent = input.value.trim();
-            document.querySelector('#main').appendChild(para);
+            const li = document.createElement('li');
+            li.textContent = input.value.trim();
+            document.querySelector('#main').appendChild(li);
             input.value = '';
+
+            li.addEventListener('click', function () {
+                console.log(this);
+                this.style.color = this.style.color === 'red' ? '' : 'red';
+            }
+            )
         }
         )
     </script>

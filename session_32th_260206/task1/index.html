@@ -8,13 +8,21 @@
 </head>
 
 <body>
-    <button id="add-para">Add paragraph</button>
-    <main id="main"></main>
+    <!-- 
+    Lesson 1: Adding a Paragraph
+    There is a "Add Paragraph" button.
+    Click it → create a <p> with the content "Hello DOM" and add it to the page.
+    -->
+    <main class="main">
+        <button id="add" class="add">Add paragraph</button>
+        <div id="content" class="content"></div>
+    </main>
+
     <script>
-        document.querySelector('#add-para').addEventListener("click", () => {
+        document.querySelector('#add').addEventListener("click", () => {
             const para = document.createElement('p');
             para.textContent = 'Hello DOM';
-            document.querySelector('#main').appendChild(para);
+            document.querySelector('#content').appendChild(para);
         }
         )
     </script>

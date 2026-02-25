@@ -11,8 +11,8 @@
             cursor: pointer;
         }
 
-        .li-done {
-            text-decoration: line-through;
+        .bg-blue {
+            background-color: blue;
         }
 
         button {
@@ -22,9 +22,19 @@
 </head>
 
 <body>
-    <input id="input-text" type="text" autocomplete="off">
-    <button id="add-item">Add</button>
-    <li id="main"></li>
+    <!-- 
+    Lesson 8: Selected Lists
+    Click on an item → change the background to blue
+    Only one item is selected at a time
+    Click another item → deselect the old item 
+    -->
+
+    <main>
+        <input id="input-text" type="text" autocomplete="off">
+        <button id="add-item">Add</button>
+        <ul id="items"></ul>
+    </main>
+
     <script>
         let i = 0;
         document.querySelector('#add-item').addEventListener("click", () => {
@@ -39,11 +49,16 @@
             deleteBtn.textContent = 'x';
 
             li.appendChild(deleteBtn);
-            document.querySelector('#main').appendChild(li);
+            document.querySelector('#items').appendChild(li);
             input.value = '';
 
             li.addEventListener('click', (e) => {
-                e.target.classList.toggle('li-done');
+                e.stopPropagation();
+                const selected = document.querySelector('.bg-blue');
+                if (selected) {
+                    selected.classList.remove('bg-blue');
+                }
+                li.classList.add('bg-blue');
             }
             )
             deleteBtn.addEventListener('click', (e) => {

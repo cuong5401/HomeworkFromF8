@@ -18,11 +18,22 @@
 </head>
 
 <body>
-    <input id="input-text" type="text" autocomplete="off">
-    <button id="add-item">Add</button>
-    <li id="main"></li>
+
+    <!-- 
+    Lesson 6: Deleting Items
+    Each <li> has an additional X button.
+    Click X → delete that <li> item.
+     -->
+
+    <main>
+        <input id="input-text" type="text" autocomplete="off">
+        <button id="add-item">Add</button>
+        <ul id="items"></ul>
+    </main>
     <script>
-        let i = 0;
+
+        const items = document.querySelector('#items');
+
         document.querySelector('#add-item').addEventListener("click", () => {
             const input = document.querySelector('#input-text');
             if (input.value.trim() === '') {
@@ -35,7 +46,7 @@
             deleteBtn.textContent = 'x';
 
             li.appendChild(deleteBtn);
-            document.querySelector('#main').appendChild(li);
+            items.appendChild(li);
             input.value = '';
 
             li.addEventListener('click', (e) => {

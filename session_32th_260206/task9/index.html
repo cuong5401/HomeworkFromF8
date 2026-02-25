@@ -4,55 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        li {
-            user-select: none;
-            cursor: pointer;
-        }
-
-        .li-done {
-            text-decoration: line-through;
-        }
-
-        button {
-            cursor: pointer;
-        }
-    </style>
+    <title>Advanced Todo</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <input id="input-text" type="text" autocomplete="off">
-    <button id="add-item">Add</button>
-    <li id="main"></li>
-    <script>
-        let i = 0;
-        document.querySelector('#add-item').addEventListener("click", () => {
-            const input = document.querySelector('#input-text');
-            if (input.value.trim() === '') {
-                input.value = '';
-                return;
-            }
-            const li = document.createElement('li');
-            li.textContent = input.value.trim();
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = 'x';
+    <!-- 
+    Lesson 9: Advanced Todo (Basic DOM Only)
+    Interface
+    There is one input field and one add button.
+    The list of tasks is displayed in the ul `li`.
+    Beside each task name, there is a "done" button (default background is yellow) and a "delete" button (red).
+    If you click "done," the "done" button turns green.
+    Clicking it again turns it yellow.
+    Clicking the delete button removes the task.
+    Add another input button to search for the added task.
+    Add a checkbox with the label "done." If checked, only completed tasks will be displayed. 
+    -->
 
-            li.appendChild(deleteBtn);
-            document.querySelector('#main').appendChild(li);
-            input.value = '';
+    <main class="container">
+        <h1 class="title">Advanced Todo</h1>
+        <div class="control">
+            <div class="control-row">
+                <input id="task-input" type="text" placeholder="Add task...">
+                <button id="add-work">Add</button>
+            </div>
+            <div class="control-row search-row">
+                <input id="search-input" type="text" placeholder="Search task...">
+                <button id="search-btn">Search</button>
+            </div>
+            <div class="control-row">
+                <label for="doneWork">done work</label>
+                <input id="doneWork" type="checkbox">
+            </div>
+        </div>
+        <div id="content">
+            <ul id="task-list"></ul>
+        </div>
 
-            li.addEventListener('click', (e) => {
-                e.target.classList.toggle('li-done');
-            }
-            )
-            deleteBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                e.target.closest('li').remove();
-            })
-        }
-        )
-    </script>
+    </main>
+    <script src="./script.js"></script>
 </body>
 
 </html>

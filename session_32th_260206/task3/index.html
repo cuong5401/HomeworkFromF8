@@ -8,20 +8,34 @@
 </head>
 
 <body>
-    <input id="input-text" type="text" autocomplete="off">
-    <button id="add-item">Add</button>
-    <main id="main"></main>
+
+    <!-- 
+    Lesson 3: Print What You Input
+    You have a <input> and an “Add” button.
+    Click → to get the text from the input.
+    Create a <p> to contain that content.
+    Clear the input after adding it. 
+    -->
+
+    <main id="main" class="main">
+        <form id="form-input" action="">
+            <input id="input-text" type="text" autocomplete="off">
+            <button id="add">Add</button>
+        </form>
+    </main>
     <script>
-        let i = 0;
-        document.querySelector('#add-item').addEventListener("click", () => {
-            const input = document.querySelector('#input-text');
+        const main = document.querySelector('#main');
+        const input = document.querySelector('#input-text');
+
+        document.querySelector('#add').addEventListener("click", (event) => {
+            event.preventDefault();
             if (input.value.trim() === '') {
                 input.value = '';
                 return;
             }
             const para = document.createElement('p');
             para.textContent = input.value.trim();
-            document.querySelector('#main').appendChild(para);
+            main.appendChild(para);
             input.value = '';
         }
         )

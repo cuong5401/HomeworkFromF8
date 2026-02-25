@@ -16,10 +16,6 @@
 
         }
 
-        .back-ground {
-            background-color: green;
-        }
-
         button {
             cursor: pointer;
         }
@@ -27,33 +23,37 @@
 </head>
 
 <body>
-    <input id="input-text" type="text" autocomplete="off">
-    <button id="add-item">Add</button>
-    <li id="main"></li>
+    <!-- 
+    Lesson 7: Todo with Status
+    Click on text:
+    Threaded through (completed)
+    Click the Delete button:
+    Delete todo
+    -->
+    <main>
+        <input id="input-text" type="text" autocomplete="off">
+        <button id="add-item">Add</button>
+        <ul id="items"></ul>
+    </main>
     <script>
-        let i = 0;
+        const items = document.querySelector('#items');
         document.querySelector('#add-item').addEventListener("click", () => {
             const input = document.querySelector('#input-text');
             if (input.value.trim() === '') {
                 input.value = '';
                 return;
             }
-            const main = document.querySelector('#main');
             const li = document.createElement('li');
             li.textContent = input.value.trim();
             const deleteBtn = document.createElement('button');
             deleteBtn.textContent = 'x';
 
             li.appendChild(deleteBtn);
-            main.appendChild(li);
+            items.appendChild(li);
             input.value = '';
 
             li.addEventListener('click', (e) => {
-                // e.target.classList.toggle('li-done');
-                main.querySelectorAll('li').forEach((e) => {
-                    e.classList.remove('back-ground');
-                });
-                e.target.classList.add('back-ground');
+                e.target.classList.toggle('li-done');
             }
             )
             deleteBtn.addEventListener('click', (e) => {

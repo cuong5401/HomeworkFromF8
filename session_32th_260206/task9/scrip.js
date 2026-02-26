@@ -76,13 +76,4 @@ form.addEventListener("submit", (e) => {
     const inputValue = input.value.trim();
     input.value = "";
     todo1.addWork(inputValue);
-
-    // if (!inputValue) return;
-    // doneBtn.addEventListener("click", (e) => {
-    //     e.target.classList.toggle("done-btn-green");
-    // });
-
-    // deleteBtn.addEventListener("click", (e) => {
-    //     li.remove();
-    // });
 });

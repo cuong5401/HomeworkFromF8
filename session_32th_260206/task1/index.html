@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+
+<body>
+    <!--
+        task 1: Adding a Paragraph
+        There is a "Add Paragraph" button.
+        Click → create a <p> with the content "Hello DOM" and add it to the page.
+    -->
+    <main>
+        <button id="add-para">Adding a Paragraph</button>
+        <div id="content"></div>
+    </main>
+
+    <script>
+        const addBtn = document.querySelector('#add-para');
+        const content = document.querySelector('#content');
+        addBtn.addEventListener('click',
+            () => content.innerHTML += `<p>Hello DOM</p>`
+        )
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+</head>
+
+<body>
+    <!-- 
+        Lesson 4: To-Do List (Mini Todo)
+        Input + Add button (the user will enter the name of the task to be done in that input tag)
+        Add → add <li> to <ul>
+        If input is empty → do not add
+    -->
+
+    <main>
+        <form id="form" action="" autocomplete="off">
+            <input id="form_input" type="text">
+            <button>Add</button>
+        </form>
+        <ul id="todo-List"></ul>
+    </main>
+
+    <script>
+        const form = document.getElementById('form');
+        const input = document.getElementById('form_input');
+        const todoList = document.getElementById('todo-List');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const inValue = input.value.trim();
+            input.value = '';
+            if (!inValue) return;
+            const li = document.createElement('li');
+            li.innerText = inValue;
+            todoList.appendChild(li);
+        })
+    </script>
+</body>
+
+</html>

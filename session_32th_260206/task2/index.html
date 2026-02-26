@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+
+<body>
+    <!-- 
+        Lesson 2: Adding Multiple Items
+        There is an “Add item” button
+        Each click → adds <li> to <ul>
+        Content: Item 1, Item 2, Item 3 …
+    -->
+    <main>
+        <button id="add-item">Add item</button>
+        <ul id="items"></ul>
+    </main>
+
+    <script>
+        const addBtn = document.getElementById('add-item');
+        const items = document.getElementById('items');
+        const countUp = (() => {
+            let i = 0;
+            return () => ++i;
+        })()
+        addBtn.addEventListener('click', () => {
+            const li = document.createElement('li');
+            li.innerText = `Item ${countUp()}`;
+            items.appendChild(li);
+        })
+
+    </script>
+</body>
+
+</html>

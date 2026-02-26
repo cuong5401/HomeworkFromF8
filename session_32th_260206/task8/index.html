@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 7</title>
+    <title>Task 8</title>
     <style>
         li {
             user-select: none;
@@ -13,7 +13,10 @@
 
         .item-done {
             text-decoration: line-through;
+        }
 
+        .item-bg-blue {
+            background-color: blue;
         }
 
         button {
@@ -24,11 +27,10 @@
 
 <body>
     <!-- 
-    Lesson 7: Todo with Status
-    Click on text:
-    Threaded through (completed)
-    Click the Delete button:
-    Delete todo
+    Lesson 8: Selected Lists
+    Click on a <li> → change the background to blue
+    Only one item can be selected at a time
+    Click another item → deselect the old item
     -->
     <main>
         <form id="form" action="" autocomplete="off">
@@ -56,7 +58,15 @@
             todoList.appendChild(li)
 
             li.addEventListener('click', () => {
-                li.classList.toggle('item-done');
+                //double click --> clear bg blue
+                if (li.classList.contains('item-bg-blue')) {
+                    li.classList.remove('item-bg-blue');
+                    return;
+                }
+                todoList.querySelectorAll('.item-bg-blue').forEach((e) => {
+                    e.classList.remove('item-bg-blue');
+                });
+                li.classList.add('item-bg-blue');
             })
             deleteBtn.addEventListener('click', (e) => {
                 li.remove();

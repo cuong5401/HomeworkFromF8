@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+    <style>
+        * {
+            user-select: none;
+        }
+
+        .color-red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        Lesson 5: Click to change color
+        Each time you click:
+        Change text color to red
+        Click again → return to black
+    -->
+    <main>
+        <form id="form" action="" autocomplete="off">
+            <input id="form_input" type="text">
+            <button>Add</button>
+        </form>
+        <ul id="todo-list">
+            <li>công việc 1</li>
+            <li>công việc 2</li>
+        </ul>
+    </main>
+
+    <script>
+        const form = document.getElementById('form');
+        const input = document.getElementById('form_input');
+        const todoList = document.getElementById('todo-list');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const inputValue = input.value.trim();
+            input.value = '';
+            if (!inputValue) return;
+            todoList.innerHTML += `\n<li> ${inputValue}</li>`;
+        })
+
+        todoList.addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) return;
+            e.target.classList.toggle('color-red');
+        })
+
+    </script>
+</body>
+
+</html>

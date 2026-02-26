@@ -4,32 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 7</title>
-    <style>
-        li {
-            user-select: none;
-            cursor: pointer;
-        }
-
-        .item-done {
-            text-decoration: line-through;
-
-        }
-
-        button {
-            cursor: pointer;
-        }
-    </style>
+    <title>Task 6</title>
 </head>
 
 <body>
     <!-- 
-    Lesson 7: Todo with Status
-    Click on text:
-    Threaded through (completed)
-    Click the Delete button:
-    Delete todo
+        Lesson 6: Deleting an Item
+        Each <li> has an X button added.
+        Click X → delete that <li> item.
     -->
+
     <main>
         <form id="form" action="" autocomplete="off">
             <input name="todo" id="form_input" type="text">
@@ -54,10 +38,6 @@
             li.innerText = inputValue + ' ';
             li.appendChild(deleteBtn);
             todoList.appendChild(li)
-
-            li.addEventListener('click', () => {
-                li.classList.toggle('item-done');
-            })
             deleteBtn.addEventListener('click', (e) => {
                 li.remove();
             })

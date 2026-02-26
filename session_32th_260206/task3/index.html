@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+    <style>
+        input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 
+        Lesson 3: Print What You Input
+        There is a <input> and an “Add” button
+        Click → to get the text in the input
+        Create a <p> containing that content
+        Clear the input after adding it
+    -->
+    <main>
+        <form id="form" action="" autocomplete="off">
+            <input id="form_input" type="text">
+            <button>Add</button>
+        </form>
+        <div id="content"></div>
+    </main>
+
+    <script>
+        const form = document.getElementById('form');
+        const input = document.getElementById('form_input');
+        const content = document.getElementById('content');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const p = document.createElement('p');
+            p.textContent = input.value;
+            input.value = '';
+            content.appendChild(p);
+            input.focus();
+        }
+        )
+    </script>
+
+</body>
+
+</html>

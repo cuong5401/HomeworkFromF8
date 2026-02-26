@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- 
+    Lesson 9: Advanced Todo (Basic DOM Only)
+    Interface
+    There is one input field and one add button.
+    The list of tasks is displayed in the ul li.
+    Beside each task name, there is a done button (default background is yellow), and a delete button (red).
+    If you click done, the done button turns green.
+    Clicking it again turns it yellow. Clicking the delete button removes the task.
+    Add another input button to search for the added task.
+    Add a checkbox with the label "done". If checked, only completed tasks will be displayed.
+    -->
+
+    <main>
+        <form id="form" action="" autocomplete="off">
+            <input name="todo" id="form_input" type="text">
+            <button>Add</button>
+        </form>
+
+        <div style="display: flex; gap:18px">
+            <div>
+                <input id="checkDone" type="checkbox">
+                <span>Done</span>
+            </div>
+            <div>
+                <input id="search-input" type="text" placeholder="search">
+                <button id="search-btn">search</button>
+            </div>
+        </div>
+
+        <ul id="todo-list"></ul>
+    </main>
+
+    <script src="./scrip.js"></script>
+</body>
+
+</html>

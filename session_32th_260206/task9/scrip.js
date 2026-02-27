@@ -2,13 +2,19 @@ const form = document.getElementById("form");
 const input = document.getElementById("form_input");
 
 class todoApp {
-    constructor(todoContainer) {
-        this.todoList = document.getElementById(todoContainer);
+    constructor(todoContainerId, onDoneId, searchId) {
+        this.todoList = document.getElementById(todoContainerId);
+        this.onDone = document.getElementById(onDoneId);
+        this.search = document.getElementById(searchId);
+
         this.todoArr = [];
         this.id = (() => {
             let i = 0;
             return () => ++i;
         })();
+
+        this.onDone && this.onDone.addEventListener("change", (e) => this.onDoneHandle(e));
+        this.search && this.search.addEventListener("submit", (e) => this.searchHandle(e));
     }
 
     addWork(workName) {
@@ -20,9 +26,8 @@ class todoApp {
         };
 
         this.todoArr.push(work);
-        console.log(this.todoArr);
-
         this.renderWork(this.todoArr);
+        this.onDone.checked = false;
     }
 
     renderWork(renderData) {
@@ -66,9 +71,23 @@ class todoApp {
         this.todoArr.splice(index, 1);
         li.remove();
     }
+
+    onDoneHandle(e) {
+        const renderWork = e.target.checked === true ? this.todoArr.filter((w) => w.done === true) : this.todoArr;
+        this.renderWork(renderWork);
+    }
+
+    searchHandle(searchElement) {
+        searchElement.preventDefault();
+        const searchChar = searchElement.target.elements[0].value.trim().toLowerCase();
+
+        const renderSearch = searchChar ? this.todoArr.filter((w) => w.name.toLowerCase().includes(searchChar)) : this.todoArr;
+        this.renderWork(renderSearch);
+        this.onDone.checked = false;
+    }
 }
 
-const todo1 = new todoApp("todo-list");
+const todo1 = new todoApp("todo-list", "checkDone", "search");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();

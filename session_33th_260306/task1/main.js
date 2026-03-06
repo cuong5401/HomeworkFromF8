@@ -14,9 +14,12 @@ const validAccounts = [
     { id: 3, username: "f8student", password: "f8learning" },
     { id: 4, username: "c", password: "c" },
 ];
-
+let islogging = false;
 loginForm.addEventListener("submit", function (event) {
     event.preventDefault();
+    if (islogging) return;
+    islogging = true;
+
     messageDiv.innerText = "Đang gửi request đăng nhập...";
 
     const formData = new FormData(loginForm);
@@ -31,10 +34,12 @@ loginForm.addEventListener("submit", function (event) {
         .then(function (authenticatedUser) {
             messageDiv.innerText = `Đăng nhập thành công: ${authenticatedUser.username}`;
             console.log(authenticatedUser);
+            islogging = false;
         })
         .catch(function (errorMessage) {
             messageDiv.innerText = `Đăng nhập thất bại: ${errorMessage}`;
             console.log(errorMessage);
+            islogging = false;
         });
 });
 

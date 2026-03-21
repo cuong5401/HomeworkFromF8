@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1 id="printResult"></h1>
+        <button id="reset">Reset số lần truy cập</button>
+
+        <script>
+            const printResult = document.getElementById("printResult");
+            const reset = document.getElementById("reset");
+
+            let kai = localStorage.getItem("kai");
+            if (!kai) kai = "0";
+            let numKai = Number(kai) + 1;
+            localStorage.setItem("kai", numKai);
+            printResult.innerText = `Bạn đã truy cập trang này ${numKai} lần`;
+
+            reset.addEventListener("click", () => {
+                localStorage.setItem("kai", "0");
+                printResult.innerText = `Bạn đã truy cập trang này 0 lần`;
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title id="title"></title>
+        <style>
+            html {
+                font-size: 20px;
+            }
+            button {
+                height: 50%;
+                padding: 14px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="bodyTitle"></h1>
+        <p id="content"></p>
+        <button id="back">Trở về</button>
+
+        <script>
+            const title = document.querySelector("#title");
+            const bodyTitle = document.querySelector("#bodyTitle");
+            const content = document.querySelector("#content");
+            const back = document.querySelector("#back");
+
+            const titleValue = localStorage.getItem("title");
+            const contentValue = localStorage.getItem("content");
+            localStorage.removeItem("title");
+            localStorage.removeItem("content");
+
+            title.textContent = titleValue;
+            bodyTitle.textContent = titleValue;
+            content.textContent = contentValue;
+            back.addEventListener("click", () => history.back());
+        </script>
+    </body>
+</html>

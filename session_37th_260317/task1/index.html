@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <label for="name">NAME</label>
+        <input id="name" type="text" />
+        <button id="save">Lưu vào local storage</button>
+
+        <button id="get">Đọc từ local storage</button>
+        <div id="printData"></div>
+
+        <script>
+            const name = document.getElementById("name");
+            const saveBtn = document.getElementById("save");
+            const getBtn = document.getElementById("get");
+            const printData = document.getElementById("printData");
+
+            saveBtn.addEventListener("click", () => {
+                const data = name.value.trim();
+                name.value = "";
+                if (!data) return;
+                localStorage.setItem("name", data);
+            });
+            getBtn.addEventListener("click", () => {
+                const data = localStorage.getItem("name");
+                if (!data) return;
+                printData.innerText = data;
+            });
+        </script>
+    </body>
+</html>

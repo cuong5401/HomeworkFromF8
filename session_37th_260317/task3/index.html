@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            html {
+                font-size: 20px;
+            }
+
+            li {
+                border: 1px solid #ddd;
+                padding: 16px;
+                margin-bottom: 12px;
+            }
+            img {
+                height: 120px;
+                width: 120px;
+                object-fit: cover;
+            }
+
+            .cart {
+                position: fixed;
+                right: 40px;
+                bottom: 40px;
+                cursor: pointer;
+                background-color: aliceblue;
+            }
+            .cart-icon {
+                height: 40px;
+                width: 40px;
+                object-fit: cover;
+            }
+            .quantity {
+                position: absolute;
+                right: 0;
+                top: -20px;
+                font-size: 20px;
+                padding: 8px;
+                background-color: red;
+                border-radius: 999px;
+            }
+            .cart-list {
+                display: none;
+                position: fixed;
+                right: 60px;
+                bottom: 40px;
+                padding: 40px;
+                background-color: aqua;
+                list-style: none;
+            }
+            .cart:hover .cart-list {
+                display: block;
+            }
+            .cart-list-clear {
+                margin-left: auto;
+                padding: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <main id="main"></main>
+        <div class="cart" id="cart">
+            <span class="quantity" id="quantity">0</span>
+            <img class="cart-icon" src="./cart.svg" alt="cart" />
+            <div class="cart-list" id="cart-list">
+                <ul id="cart-list-print"></ul>
+                <button class="cart-list-clear" id="cart-list-clear">
+                    Xóa tất cả
+                </button>
+            </div>
+        </div>
+        <script src="./javaScript.js"></script>
+    </body>
+</html>

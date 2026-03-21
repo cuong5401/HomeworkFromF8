@@ -1,50 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            html {
+                font-size: 20px;
+            }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        html {
-            font-size: 20px;
-        }
+            body {
+                position: relative;
+            }
 
-        li {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
+            li {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 20px;
+            }
 
-        img {
-            margin-right: 20px;
-            height: 100px;
-            border: 1px solid #000;
-        }
+            img {
+                margin-right: 20px;
+                height: 100px;
+                border: 1px solid #000;
+            }
 
-        h2 {
-            display: inline;
-        }
+            h2 {
+                display: inline;
+            }
 
-        button {
-            height: 50%;
-            padding: 14px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-    </style>
-</head>
+            button {
+                height: 50%;
+                padding: 14px;
+                font-size: 20px;
+                cursor: pointer;
+            }
 
-<body>
-    <button id="add-product-btn">thêm bài viết mới</button>
-    <h1>Danh sách bài viết</h1>
-    <main id="main">
+            .modal {
+                display: none;
+                padding: 60px 100px;
+                position: fixed;
+                background: rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(3px);
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+            }
 
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            .formE {
+                padding: 40px;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+            }
 
-    <script src="./main.js"></script>
-</body>
+            label {
+                font-size: 20px;
+            }
+            input,
+            textarea {
+                height: 30px;
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            textarea {
+                height: 300px;
+            }
+        </style>
+    </head>
 
+    <body>
+        <button id="add-product-btn">thêm bài viết mới</button>
+        <h1>Danh sách bài viết</h1>
+        <main id="main"></main>
+
+        <div class="modal" id="modal">
+            <form action="" class="formE" id="formE">
+                <h2 class="formE-title" id="formE-title">Sửa bài viết</h2>
+                <label for="">Tiêu đề</label>
+                <input type="text" id="titleEdit" />
+                <label for="">nội dung</label>
+                <textarea
+                    rows="4"
+                    cols="30"
+                    placeholder="Nhập nội dung..."
+                    id="contentEdit"
+                ></textarea>
+                <label for="">Link ảnh</label>
+                <input type="text" id="imgEdit" />
+                <div>
+                    <button type="button" id="submit-btn">Sửa</button>
+                    <button type="button" id="submit-cance-btn">Hủy</button>
+                </div>
+            </form>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script src="./main.js"></script>
+    </body>
 </html>

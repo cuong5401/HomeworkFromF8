@@ -1,7 +1,7 @@
 // tạo cấu hình API
 const proCallApi = axios.create({
     baseURL: "https://dummyjson.com/products/",
-    timeout: 3000,
+    timeout: 1000,
     headers: { "Content-Type": "application/json" },
 });
 
@@ -23,7 +23,6 @@ let editingId = null;
 
 function getFormPayload() {
     const imageValue = imgInput.value.trim();
-
     return {
         title: titleInput.value.trim(),
         description: contentInput.value.trim(),
@@ -79,11 +78,11 @@ function createProductItem(product) {
     });
 
     const editBtn = document.createElement("button");
-    editBtn.textContent = "sua noi dung";
+    editBtn.textContent = "Sửa nội dung";
     editBtn.addEventListener("click", () => openModalForEdit(product.id));
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Xoa bai viet";
+    deleteBtn.textContent = "Xóa bài viết";
     deleteBtn.addEventListener("click", () => handleDeleteProduct(product.id));
 
     li.append(image, title, detailBtn, editBtn, deleteBtn);
@@ -99,6 +98,7 @@ function replaceProductItem(product) {
     currentLi.replaceWith(newLi);
 }
 
+// app vào main
 function renderProducts(list) {
     main.innerHTML = "";
     const fragment = document.createDocumentFragment();
@@ -110,8 +110,9 @@ function renderProducts(list) {
     main.appendChild(fragment);
 }
 
+// gọi xóa và cập nhật lại product
 function handleDeleteProduct(id) {
-    const isDelete = confirm("ban co muon xoa bai viet nay khong?");
+    const isDelete = confirm("Bạn có muốn xóa bài viết này không?");
     if (!isDelete) return;
 
     deleteAPI(id).then((deletedProduct) => {
@@ -123,10 +124,12 @@ function handleDeleteProduct(id) {
     });
 }
 
+// submit data Form
 function handleSubmit() {
     const payload = getFormPayload();
     if (!payload.title || !payload.description) return;
 
+    // nó là sửa
     if (editingId !== null) {
         const productIndex = products.findIndex(
             (product) => product.id === editingId,
@@ -136,14 +139,12 @@ function handleSubmit() {
         patchAPI(editingId, payload).then((updatedProduct) => {
             if (!updatedProduct) return;
 
-            const mergedProduct = normalizeProduct(updatedProduct, {
+            products[productIndex] = {
                 ...products[productIndex],
                 ...payload,
-                id: editingId,
-            });
+            };
 
-            products[productIndex] = mergedProduct;
-            replaceProductItem(mergedProduct);
+            replaceProductItem(products[productIndex]);
             closeModal();
         });
 
@@ -153,17 +154,15 @@ function handleSubmit() {
     postAPI(payload).then((createdProduct) => {
         if (!createdProduct) return;
 
-        const newProduct = normalizeProduct(createdProduct, payload);
-
-        products.push(newProduct);
-        main.appendChild(createProductItem(newProduct));
+        products.push(createdProduct);
+        main.appendChild(createProductItem(createdProduct));
         closeModal();
     });
 }
 
 async function init() {
     const apiProducts = await getProducts();
-    products = apiProducts.map((product) => normalizeProduct(product));
+    products = apiProducts;
     renderProducts(products);
 }
 
